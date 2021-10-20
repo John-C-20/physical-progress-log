@@ -52,3 +52,8 @@ app.use("/api/users", users); // appends the users route ("/test") to "/api/user
 app.use(express.urlencoded( { extended: false } )); // replaces app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json()) // replaces app.use(bodyParser.json())
 
+
+
+const exercises = require("./routes/api/exercises");
+app.use("/api/exercises/", exercises); 
+
