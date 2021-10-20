@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const { ExerciseSchema } = require("./Exercise");
 
 const WorkoutSchema = new Schema ({
-    date: Date,
+    date: {type: Date, default: Date()},
     exercises: [ExerciseSchema] // embedded document
 })
 
