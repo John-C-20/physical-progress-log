@@ -11,7 +11,6 @@ const getWorkouts = async (req, res) => {
 }
 
 const getWorkout = async (req, res) => {
-
     try {
         const id = await req.params.id
         const workout = await Workout.find({ _id: id });
