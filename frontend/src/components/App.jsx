@@ -1,14 +1,16 @@
 import '../App.css';
 import { Route, Switch, Link } from 'react-router-dom'
-import Dashboard from './dashboard';
+import Main from './main';
+import Navbar from './navbar';
 import WorkoutForm from "./workoutForm";
 
 
 function App() {
   return (
     <div className="App">
+      <Navbar /> 
       <Switch>
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={Main} />
         <Route path="/new_workout" component={WorkoutForm} />
       </Switch>
     </div>

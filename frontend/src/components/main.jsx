@@ -3,15 +3,17 @@ import { Link } from "react-router-dom"
 import Button from "@mui/material/Button"
 
 
-const Dashboard = (props) => {
+const Main = (props) => {
     return(
-        <div className="dashboard">
+        <div className="main">
+            <h1>Physical Progress Logger</h1>
             <Link to="/new_workout">
                 <Button variant="contained">New Workout</Button>
             </Link>
+            <footer>Copyright %copy; 2021 PPL</footer>
         </div>
     )
 }
 
-export default Dashboard;
+export default Main;
 
