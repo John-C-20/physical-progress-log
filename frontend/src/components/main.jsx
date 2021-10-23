@@ -10,7 +10,7 @@ const Main = (props) => {
             <Link to="/new_workout">
                 <Button variant="contained">New Workout</Button>
             </Link>
-            <footer>Copyright %copy; 2021 PPL</footer>
+            <footer>Copyright &copy; 2021 PPL</footer>
         </div>
     )
 }

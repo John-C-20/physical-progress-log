@@ -1,61 +1,42 @@
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-// import { useDispatch, useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions/session_actions';
+import { withRouter } from 'react-router';
 import React from 'react';
 import { Link } from 'react-router-dom'
-import './navbar.css'
 
-class NavBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.logoutUser = this.logoutUser.bind(this);
-        this.getLinks = this.getLinks.bind(this);
-    }
+const NavBar = props => {
+    const loggedIn = useSelector(state => state.session.isAuthenticated)
+    const dispatch = useDispatch() 
 
-    logoutUser(e) {
+    const logoutUser = (e) => {
         e.preventDefault();
-        this.props.logout();
+        dispatch(logout());
     }
 
-    // Selectively render links dependent on whether the user is logged in
-    getLinks() {
-        if (this.props.loggedIn) {
+    const getLinks = () => {
+        if (loggedIn) {
             return (
                 <div>
-                    <Link to={'/tweets'}>All Tweets</Link>
-                    <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/new_tweet'}>Write a Tweet</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
+                    <Link to="/new_workout">New Workout</Link>
+                    <button onClick={logoutUser}>Logout</button>
                 </div>
-            );
+            )
         } else {
             return (
                 <div>
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
+                    <Link to="/signup">Signup</Link>
+                    <Link to="/login">Login</Link>
                 </div>
-            );
+            )
         }
     }
 
-    render() {
-        return (
-            <div>
-                <h1>Chirper</h1>
-                {this.getLinks()}
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h1>Physical Progress Logger</h1>
+            {getLinks()}
+        </div>
+    )
 }
 
-export default NavBar;
-
-const mapStateToProps = state => ({
-    loggedIn: state.session.isAuthenticated
-});
-
-export default connect(
-    mapStateToProps,
-    { logout }
-)(NavBar);
+export default withRouter(NavBar)

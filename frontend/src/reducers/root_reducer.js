@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux'
 import session from './session_api_reducer';
+import errors from './errors_reducer';
 
 
 const rootReducer = combineReducers({
     //     entities: entitiesReducer,
-    session
-    //     errors: errorsReducer,
+    session,
+    errors
     //     queue: queueReducer,
     //     modal: modalReducer
 })
@@ -19,6 +20,6 @@ const rootReducer = combineReducers({
 //         default:
 //             return state
 //     }
-}
+
 
 export default rootReducer;
