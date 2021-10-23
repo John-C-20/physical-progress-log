@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -19,8 +20,9 @@ class LoginForm extends React.Component {
 
   // Once the user has been authenticated, redirect to the main page
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
     if (nextProps.currentUser === true) {
-      this.props.history.push('/');
+      this.props.history.push('/new_workout');
     }
 
     // Set or clear errors
@@ -102,3 +104,22 @@ export default withRouter(connect(
   mapDispatchToProps
 )(LoginForm));
 
+
+
+
+
+// const loginForm = props => {
+//   const [email, setEmail] = useState('')
+//   const [password, setPassword] = useState('')
+//   const [errors, setErrors] = useState({})
+//   const user = useSelector(state => state.session.user)
+
+//   useEffect(() => {
+//     if (user) {
+//       props.history.push('/');
+//       setErrors(error)
+//     }
+//     console.log('property changed', user, error);
+//   }, [user, errors])
+  
+// }

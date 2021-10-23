@@ -10,8 +10,8 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         !loggedIn ? (
             <Component {...props} />
         ) : (
-            // Redirect to the tweets page if the user is authenticated
-            <Redirect to="/tweets" />
+            // Redirect to the main page if the user is authenticated
+            <Redirect to="/" />
         )
     )} />
 );
@@ -23,7 +23,7 @@ const Protected = ({ component: Component, loggedIn, ...rest }) => (
             loggedIn ? (
                 <Component {...props} />
             ) : (
-                // Redirect to the login page if the user is already authenticated
+                // Redirect to the login page if the user is not already authenticated
                 <Redirect to="/login" />
             )
         }
