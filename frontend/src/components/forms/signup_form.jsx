@@ -7,6 +7,7 @@ import PageTwo from './signup_form_page2';
 
 const SignupForm = (props) => {
     // const dispatch = useDispatch()
+    const [initialRender, setInitialRender] = useState(true)
     const signedIn = useSelector(state => state.session.isSignedIn)
     const errors = useSelector(state => state.errors.session)
 
@@ -22,23 +23,13 @@ const SignupForm = (props) => {
         errors: {} 
     })
 
+    useEffect(() => {
+        if (!initialRender) setState({ ...state, errors: errors });
+    }, [errors])
+
     const update = field => {
         return e => setState({...state, [field]: e.currentTarget.value})
     }
-
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     const user = {
-    //         email: state.email,
-    //         password: state.password,
-    //         password2: state.password2,
-    //         name: state.name,
-    //         age: state.age,
-    //         height: state.height,
-    //         weight: state.weight
-    //     }
-    //     dispatch(signup(user))
-    // }
 
     const renderErrors = () => {
         return(
@@ -54,7 +45,7 @@ const SignupForm = (props) => {
 
     return (
         <div className="signup-form-container">
-            {state.page === 1 ? <PageOne state={state} update={update} setState={setState} /> : <PageTwo state={state} update={update}/>}
+            {state.page === 1 ? <PageOne state={state} update={update} setState={setState} /> : <PageTwo state={state} update={update} setState={setState} setInitialRender={setInitialRender}/>}
             {renderErrors()}
         </div>
     )

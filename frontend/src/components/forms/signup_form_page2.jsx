@@ -4,7 +4,7 @@ import { signup } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom'
 
 
-const PageTwo = ({ state, update }) => {
+const PageTwo = ({ state, update, setState, setInitialRender }) => {
     const dispatch = useDispatch()
 
     const handleSubmit = e => {
@@ -19,6 +19,8 @@ const PageTwo = ({ state, update }) => {
             weight: state.weight
         }
         dispatch(signup(user))
+        setInitialRender(false)
+        setState({...state, page: 1})
     }
 
     return (
