@@ -4,6 +4,7 @@ import Main from './main';
 import Navbar from './navbar';
 import WorkoutForm from "./forms/workout_form";
 import LoginForm from "./forms/login_form";
+import SignupForm from "./forms/signup_form";
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <AuthRoute exact path="/" component={Main} />
         <AuthRoute path="/login" component={LoginForm} />
+        <AuthRoute path="/signup" component={SignupForm} />
         <ProtectedRoute path="/new_workout" component={WorkoutForm} />
       </Switch>
     </div>
