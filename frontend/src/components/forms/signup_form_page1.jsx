@@ -26,7 +26,8 @@ const PageOne = ({ state, update, setState }) => {
                 onChange={update('password2')}
                 placeholder="Confirm Password"
             />
-            <input type="submit" Value="Next"/>
+            <br />
+            <button>Next</button>
         </div>
     </form>
     )

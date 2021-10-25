@@ -17,7 +17,6 @@ const NavBar = props => {
         if (loggedIn) {
             return (
                 <div>
-                    <Link to="/new_workout">New Workout</Link>
                     <button onClick={logoutUser}>Logout</button>
                 </div>
             )
@@ -32,7 +31,7 @@ const NavBar = props => {
     }
 
     return (
-        <div>
+        <div className="navbar">
             <h1>Physical Progress Logger</h1>
             {getLinks()}
         </div>

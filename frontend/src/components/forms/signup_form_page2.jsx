@@ -50,9 +50,7 @@ const PageTwo = ({ state, update, setState, setInitialRender }) => {
                     placeholder="Weight"
                 />
                 <br />
-                <input type="submit"
-                    value="Submit" 
-                />
+                <button>Submit</button>
             </div>
         </form>
     )

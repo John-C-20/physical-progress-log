@@ -13,11 +13,12 @@ function App() {
     <div className="App">
       <Navbar /> 
       <Switch>
-        <AuthRoute exact path="/" component={Main} />
+        <ProtectedRoute exact path="/" component={Main} />
         <AuthRoute path="/login" component={LoginForm} />
         <AuthRoute path="/signup" component={SignupForm} />
         <ProtectedRoute path="/new_workout" component={WorkoutForm} />
       </Switch>
+      <footer>Copyright &copy; 2021 PPL</footer>
     </div>
   );
 }

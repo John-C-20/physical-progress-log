@@ -3,6 +3,7 @@ import Button from "@mui/material/Button"
 import Modal from "@mui/material/Modal"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
+import SaveIcon from '@mui/icons-material/Save'
 
 const style = {
     position: 'absolute',
@@ -39,6 +40,7 @@ const WorkoutForm = (props) => {
                     </Typography>
                 </Box>
             </Modal>
+            <Button startIcon={<SaveIcon />} variant="contained">Save</Button>
         </div>
     )
 }
