@@ -1,5 +1,6 @@
 const { Exercise } = require("../models/Exercise.js");
 
+// We won't be using this or the Exercise model because ExerciseSchema will be embedded in Workouts
 
 const getExercises = async (req, res) => {
     try {
@@ -11,7 +12,6 @@ const getExercises = async (req, res) => {
 }
 
 const getExercise = async (req, res) => {
-
     try {
         const id = await req.params.id
         const exercise = await Exercise.find( {_id: id } );

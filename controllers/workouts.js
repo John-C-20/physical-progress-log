@@ -12,6 +12,8 @@ const getWorkouts = async (req, res) => {
 }
 
 const getWorkout = async (req, res) => {
+    // Use req.params instead of req.body here because axios does not allow us to
+    // send data through req.body. We have to send it through the query header instead
     try {
         const id = await req.params.id
         const workout = await Workout.find({ _id: id });
@@ -22,6 +24,7 @@ const getWorkout = async (req, res) => {
 }
 
 const addWorkout = async (req, res) => {
+    // req.body is fine here bc this is a POST route
     try {
         const body = await req.body
         const workout = await Workout.create(body)
