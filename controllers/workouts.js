@@ -1,9 +1,10 @@
-const { Workout } = require("../models/Workout.js");
+const  Workout  = require("../models/Workout.js");
 
 
 const getWorkouts = async (req, res) => {
     try {
-        const workouts = await Workout.find();
+        const workouts = await Workout.find({user_id: req.query.user_id});
+        console.log(workouts)
         res.status(200).send(workouts)
     } catch (error) {
         res.status(404).send(error.message)
@@ -26,6 +27,7 @@ const addWorkout = async (req, res) => {
         const workout = await Workout.create(body)
         res.status(200).send(workout)
     } catch (error) {
+        console.log(error)
         res.status(500).send(error.message)
     }
 }

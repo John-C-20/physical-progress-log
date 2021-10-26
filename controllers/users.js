@@ -11,6 +11,9 @@ const registerUser = async (req, res) => {
     }
     else {    
         const newUser = await new User(req.body)
+        if (req.body.password !== req.body.password2) {
+            return res.status(400).json({password: "Passwords do not match"})
+        }
         // hash and salt password
         bcrypt.genSalt(10, (err,salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -18,7 +21,7 @@ const registerUser = async (req, res) => {
                 newUser.password = hash; 
                 newUser.save() 
                 .then(user => res.json({ success: true, token: 'Bearer ' + token(user) }))
-                .catch(err => res.status(400).send(err.message))
+                .catch(err => res.status(400).json({msg: err.message}))
             })
         })
     }
@@ -32,7 +35,7 @@ const loginUser = async (req, res) => {
         else res.status(400).json({password: 'Incorrect Password'});
     }
     else {
-        return res.status(400).send("user does not exist")
+        return res.status(400).json({error: "user does not exist"})
     }
 }
 
